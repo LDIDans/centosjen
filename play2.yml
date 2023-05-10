@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  vars:
+    username: usertest1
+  tasks:
+    - name: add user
+      user:
+        name: ansibleuser2
+        password: "{{ lookup('file', '/home/uzbekx/ansible/passwd.yml') }}"
+        shell: /bin/bash
+        group: wheel
+        append: yes
